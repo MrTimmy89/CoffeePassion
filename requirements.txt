@@ -7,3 +7,4 @@ scikit-learn==0.23.2
 matplotlib==3.3.3
 lightgbm==3.1.1
 streamlit==0.73.1
+sklearn
