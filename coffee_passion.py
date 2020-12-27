@@ -156,7 +156,7 @@ def main():
 		with col1:
 			origin = st.selectbox("Country of origin", sorted(df_copy[df_copy["altitude_mean_meters"] > 499]["Country.of.Origin"].unique()))
 		with col2:
-			altitude = st.selectbox("Altitude", sorted(df_copy[(df_copy["Country.of.Origin"] == origin) & (df_copy["altitude_mean_meters"] < 2500)
+			altitude = st.selectbox("Altitude", sorted(df_copy[(df_copy["Country.of.Origin"] == origin) & (df_copy["altitude_mean_meters"] < 2500) & 
 														(df_copy["altitude_mean_meters"] > 499)]["altitude_mean_meters"].unique()))
 		with col3:
 			moisture = st.slider("Moisture", .0, .3, .001)
