@@ -22,7 +22,7 @@ DEST = "."
 
 def classify(pred: float) -> str:
 	if pred < 80:
-		return "Non-speciality coffee"
+		return "Non-speciality"
 	elif pred < 85:
 		return "Very good"
 	elif pred < 90:
