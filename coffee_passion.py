@@ -19,7 +19,7 @@ import streamlit as st
 
 DATASET_URL = "https://www.kaggle.com/volpatto/coffee-quality-database-from-cqi"
 DEST_ON_PC = "C:/Users/Artem/Desktop/ML/HW4"
-DEST = "../../CoffeePassion"
+DEST = "../CoffeePassion"
 
 def classify(pred: float) -> str:
 	if pred < 80:
