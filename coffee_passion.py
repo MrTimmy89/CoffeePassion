@@ -18,12 +18,11 @@ import streamlit as st
 
 
 DATASET_URL = "https://www.kaggle.com/volpatto/coffee-quality-database-from-cqi"
-DEST_ON_PC = "C:/Users/Artem/Desktop/ML/HW4"
 DEST = "."
 
 def classify(pred: float) -> str:
 	if pred < 80:
-		return "Underscorer"
+		return "Non-speciality coffee"
 	elif pred < 85:
 		return "Very good"
 	elif pred < 90:
@@ -155,10 +154,10 @@ def main():
 		sweetness = slidebar("Sweetness", .0, 10., .01)
 		col1, col2, col3 = st.beta_columns(3)
 		with col1:
-			origin = st.selectbox("Country of origin", df_copy[df_copy["altitude_mean_meters"] > 499]["Country.of.Origin"].unique())
+			origin = st.selectbox("Country of origin", sorted(df_copy[df_copy["altitude_mean_meters"] > 499]["Country.of.Origin"].unique()))
 		with col2:
-			altitude = st.selectbox("Altitude", df_copy[(df_copy["Country.of.Origin"] == origin) &
-														(df_copy["altitude_mean_meters"] > 499)]["altitude_mean_meters"].unique())
+			altitude = st.selectbox("Altitude", sorted(df_copy[(df_copy["Country.of.Origin"] == origin) & (df_copy["altitude_mean_meters"] < 2500)
+														(df_copy["altitude_mean_meters"] > 499)]["altitude_mean_meters"].unique()))
 		with col3:
 			moisture = st.slider("Moisture", .0, .3, .001)
 		user_data = {"Flavor" : flavor,
@@ -196,7 +195,7 @@ def main():
 		st.sidebar.markdown("*** The materials used in process:***")
 		st.sidebar.markdown("*** Wikipedia***")
 		st.sidebar.markdown("*** CQI database for the year 2018***")
-		st.sidebar.markdown("*** Some random fotos from Google***")
+		st.sidebar.markdown("*** Some random photos from Google***")
 		st.sidebar.markdown("*** The Guardian article from the year 2009***")
 		st.sidebar.markdown("*** LightGBM Regressor model***")
 		col1, col2 = st.beta_columns([7, 5])
